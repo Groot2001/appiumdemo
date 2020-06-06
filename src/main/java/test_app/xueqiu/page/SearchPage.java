@@ -55,11 +55,10 @@ public class SearchPage {
     }*/
 
     @Step("选择并添加股票")
-    public SearchPage addSelectedStock(){
-        String code = "";
+    public SearchPage addSelectedStock(String code){
         By followBtn = By.xpath(String.format("//*[@text='%s']/../../..//*[@resource-id='com.xueqiu.android:id/follow_btn']", code));
         try {
-            driver.findElement(By.id("com.xueqiu.android:id/follow_btn")).click();
+            driver.findElement(followBtn).click();
         }catch (Exception e){
             System.out.println(e.getStackTrace());
         }

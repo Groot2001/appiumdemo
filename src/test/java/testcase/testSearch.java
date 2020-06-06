@@ -16,9 +16,9 @@ public class testSearch {
 
     @Test
     void testAddStock(){
-        searchPage.search("阿里巴巴").selectSearchResult("阿里巴巴", "BABA").addSelectedStock().
-                search("百度").selectSearchResult("百度", "BIDU").addSelectedStock().
-                search("腾讯").selectSearchResult("腾讯", "00700").addSelectedStock();
+        searchPage.search("阿里巴巴").selectSearchResult("阿里巴巴", "BABA").addSelectedStock("BABA").
+                search("百度").selectSearchResult("百度", "BIDU").addSelectedStock("BIDU").
+                search("腾讯").selectSearchResult("腾讯", "00700").addSelectedStock("00700");
     }
 
     @AfterAll
