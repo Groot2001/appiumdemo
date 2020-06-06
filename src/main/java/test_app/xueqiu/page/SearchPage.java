@@ -10,17 +10,16 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class SearchPage {
-    AndroidDriver driver;
+public class SearchPage extends BasePage {
     By nameLocator = By.id("com.xueqiu.android:id/name");
 
     public SearchPage(AndroidDriver driver) {
-        this.driver = driver;
+        super(driver);
     }
 
     @Step("按关键字搜索")
     public SearchPage search(String keyword){
-        driver.findElement(By.id("com.xueqiu.android:id/search_input_text")).sendKeys(keyword);
+        sendKeys(By.id("com.xueqiu.android:id/search_input_text"), keyword);
         return this;
     }
 
@@ -34,6 +33,7 @@ public class SearchPage {
 
     @Step("选择目标搜索结果")
     public SearchPage selectSearchResult(String name, String code){
+        //xpath改进
         List<WebElement> nameElements = driver.findElements(nameLocator);
         List<WebElement> codeElements = driver.findElements(By.id("com.xueqiu.android:id/code"));
         for (int i = 0; i < nameElements.size(); i++) {
@@ -47,18 +47,11 @@ public class SearchPage {
         return this;
     }
 
-    /*public SearchPage addSelectedStock(){
-        List<WebElement> stockList = driver.findElements(By.id("com.xueqiu.android:id/follow_btn"));
-        stockList.stream().map(WebElement::click);
-
-        return this;
-    }*/
-
     @Step("选择并添加股票")
     public SearchPage addSelectedStock(String code){
         By followBtn = By.xpath(String.format("//*[@text='%s']/../../..//*[@resource-id='com.xueqiu.android:id/follow_btn']", code));
         try {
-            driver.findElement(followBtn).click();
+            click(followBtn);
         }catch (Exception e){
             System.out.println(e.getStackTrace());
         }
@@ -66,9 +59,8 @@ public class SearchPage {
     }
 
     @Step("取消搜索")
-    public MainPage quitSearch(){
-        driver.findElement(By.id("com.xueqiu.android:id/action_close")).click();
-        return new MainPage(driver);
+    public void quitSearch(){
+        click(By.id("com.xueqiu.android:id/action_close"));
     }
 
 }

@@ -8,7 +8,6 @@ import test_app.xueqiu.page.MainPage;
 import test_app.xueqiu.page.MarketPage;
 
 public class testMarket {
-    static MainPage mainPage;
     static MarketPage marketPage;
     @BeforeAll
     static void setUp(){
@@ -19,10 +18,11 @@ public class testMarket {
     void testDelStock(){
         System.out.println(marketPage.getAllStock());
         marketPage.delAllStock();
+        System.out.println(marketPage.getAllStock());
     }
 
     @AfterAll
     static void tearDown(){
-        //to do
+        //marketPage.quit();
     }
 }

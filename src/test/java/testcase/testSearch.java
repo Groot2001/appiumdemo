@@ -7,6 +7,8 @@ import org.junit.jupiter.api.Test;
 import test_app.xueqiu.page.MainPage;
 import test_app.xueqiu.page.SearchPage;
 
+import static org.hamcrest.MatcherAssert.assertThat;
+
 public class testSearch {
     static SearchPage searchPage;
     @BeforeAll
