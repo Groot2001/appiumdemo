@@ -1,6 +1,5 @@
-package testcase;
+package xueqiu.testcase;
 
-import io.qameta.allure.Step;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;

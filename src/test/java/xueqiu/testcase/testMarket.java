@@ -1,9 +1,8 @@
-package testcase;
+package xueqiu.testcase;
 
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
-import sun.applet.Main;
 import test_app.xueqiu.page.MainPage;
 import test_app.xueqiu.page.MarketPage;
 
