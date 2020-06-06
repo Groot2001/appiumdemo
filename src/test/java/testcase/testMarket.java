@@ -16,7 +16,8 @@ public class testMarket {
     }
 
     @Test
-    void testAddStock(){
+    void testDelStock(){
+        System.out.println(marketPage.getAllStock());
         marketPage.delAllStock();
     }
 

@@ -2,6 +2,7 @@ package test_app.xueqiu.page;
 
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.remote.MobileCapabilityType;
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.remote.DesiredCapabilities;
@@ -34,11 +35,13 @@ public class MainPage {
     }
 
 
+    @Step("跳转到搜索")
     public SearchPage toSearch(){
         driver.findElement(By.id("com.xueqiu.android:id/home_search")).click();
         return new SearchPage(driver);
     }
 
+    @Step("跳转到行情")
     public MarketPage toMarketPage(){
         WebElement market_tab = driver.findElement(By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.TabHost/android.widget.LinearLayout/android.widget.TabWidget/android.widget.RelativeLayout[2]"));
         market_tab.click();
