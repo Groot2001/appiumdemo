@@ -1,6 +1,5 @@
 package test_app.wework.page;
 
-import io.appium.java_client.TouchAction;
 import io.appium.java_client.android.AndroidDriver;
 import org.openqa.selenium.By;
 
@@ -25,8 +24,16 @@ public class ReportPage extends BasePage {
         if (!others.equals("")){
             sendKeys(By.xpath("//android.webkit.WebView[@content-desc='日报']/android.widget.EditText[3]"),others);
         }
-        //todo: 退出日报页面
+        scroll("提交",1).click();
+        click(By.id("com.tencent.wework:id/b_o"));
+        click(By.id("com.tencent.wework:id/gyb"));
         return this;
+    }
+
+    public String getReportRecords(){
+        click(By.xpath("//*[@text='记录']"));
+        click(By.xpath("//*[@resource-id='com.tencent.wework:id/glk' and @text='我提交的']"));
+        return driver.getPageSource();
     }
 
     public void ExitReport(){
