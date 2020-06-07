@@ -89,7 +89,9 @@ public class BasePage {
     }
 
     //todo: 等待指定元素
-    public void waitElement(By by){
+    public void waitElement(By by, int timeouts){
 
     }
+
+    //todo: 自动点击弹窗、定位失败重试怎么弄？
 }
