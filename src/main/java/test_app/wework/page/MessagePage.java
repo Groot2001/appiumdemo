@@ -1,6 +1,7 @@
 package test_app.wework.page;
 
 import io.appium.java_client.android.AndroidDriver;
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
@@ -13,6 +14,7 @@ public class MessagePage extends BasePage{
         super(driver);
     }
 
+    @Step("新增待办且不指定参与人")
     public MessagePage addTodo(String content){
         click(By.id("com.tencent.wework:id/gwu"));
         click(By.id("com.tencent.wework:id/gym"));
@@ -22,6 +24,7 @@ public class MessagePage extends BasePage{
         return this;
     }
 
+    @Step("获得待办事件的标题")
     public List<String> getTodoList(){
         click(By.id("com.tencent.wework:id/gwu"));
         List<WebElement> todoList = driver.findElements(By.id("com.tencent.wework:id/gw9"));

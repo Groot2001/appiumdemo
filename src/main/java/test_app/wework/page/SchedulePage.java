@@ -1,6 +1,7 @@
 package test_app.wework.page;
 
 import io.appium.java_client.android.AndroidDriver;
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -13,6 +14,7 @@ public class SchedulePage extends BasePage {
         super(driver);
     }
 
+    @Step("设置日程")
     public SchedulePage setSchedule(String title, String date, String period){
         click(By.xpath("//*[@resource-id='com.tencent.wework:id/ee6' and @text='日程']"));
         wait.until(ExpectedConditions.elementToBeClickable(By.id("com.tencent.wework:id/gyr")));
@@ -26,6 +28,7 @@ public class SchedulePage extends BasePage {
         return this;
     }
 
+    @Step("获取日程标题")
     public List<String> getSchedule(){
         wait.until(ExpectedConditions.presenceOfElementLocated(By.id("com.tencent.wework:id/gg_")));
         List<WebElement> schedule = driver.findElements(By.id("com.tencent.wework:id/gg_"));

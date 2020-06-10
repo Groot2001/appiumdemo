@@ -1,6 +1,7 @@
 package test_app.wework.page;
 
 import io.appium.java_client.android.AndroidDriver;
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
@@ -9,10 +10,12 @@ public class WorkStagePage extends BasePage {
         super(driver);
     }
 
+    @Step("跳转到日程主页")
     public SchedulePage toSchedulePage(){
         return new SchedulePage(driver);
     }
 
+    @Step("跳转到汇报主页")
     public ReportPage toReportPage(){
         wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@text='客户联系']")));
         scroll("com.tencent.wework:id/ee6","汇报");

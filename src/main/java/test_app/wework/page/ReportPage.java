@@ -1,6 +1,7 @@
 package test_app.wework.page;
 
 import io.appium.java_client.android.AndroidDriver;
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 
 public class ReportPage extends BasePage {
@@ -12,6 +13,7 @@ public class ReportPage extends BasePage {
         super(driver);
     }
 
+    @Step("提交日报")
     public ReportPage DayReport(String todayWork, String tomorrowWork, String others){
         if (todayWork.equals("")) {
             System.out.println("今日工作内容必填");
@@ -31,6 +33,7 @@ public class ReportPage extends BasePage {
         return this;
     }
 
+    @Step("获取已提交的日报界面的PageSrc")
     public String getReportRecords(){
         click(By.xpath("//*[@text='记录']"));
         click(By.xpath("//*[@resource-id='com.tencent.wework:id/glk' and @text='我提交的']"));
