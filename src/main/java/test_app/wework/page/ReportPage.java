@@ -7,6 +7,7 @@ public class ReportPage extends BasePage {
     By dayReportEnter = By.xpath("//*[@resource-id='com.tencent.wework:id/ee6' and @text='日报']");
     By weekReportEnter = By.xpath("//*[@resource-id='com.tencent.wework:id/ee6' and @text='周报']");
     By monthReportEnter = By.xpath("//*[@resource-id='com.tencent.wework:id/ee6' and @text='月报']");
+
     public ReportPage(AndroidDriver driver) {
         super(driver);
     }
