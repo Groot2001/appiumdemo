@@ -12,6 +12,7 @@ public class WorkStagePage extends BasePage {
 
     @Step("跳转到日程主页")
     public SchedulePage toSchedulePage(){
+        click(By.xpath("//*[@resource-id='com.tencent.wework:id/ee6' and @text='日程']"));
         return new SchedulePage(driver);
     }
 

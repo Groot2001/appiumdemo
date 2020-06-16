@@ -14,16 +14,36 @@ public class SchedulePage extends BasePage {
         super(driver);
     }
 
-    @Step("设置日程")
+    @Step("新增日程")
     public SchedulePage setSchedule(String title, String date, String period){
-        click(By.xpath("//*[@resource-id='com.tencent.wework:id/ee6' and @text='日程']"));
+        //date简单用“day”来定位
         wait.until(ExpectedConditions.elementToBeClickable(By.id("com.tencent.wework:id/gyr")));
-
-        //todo //*[@resource-id='com.tencent.wework:id/g9j' and @text='8']
-        scroll("com.tencent.wework:id/g9j", "10").click();
+        scroll(date,TEXT).click();
         click(By.id("com.tencent.wework:id/gym"));
         sendKeys(By.id("com.tencent.wework:id/b2k"),title);
         click(By.xpath(String.format("//*[@text='%s']", period)));
+        click(By.id("com.tencent.wework:id/ag2"));
+        return this;
+    }
+    @Step("删除日程")
+    public SchedulePage delSchedule(String date, String title){
+        wait.until(ExpectedConditions.elementToBeClickable(By.id("com.tencent.wework:id/gyr")));
+        scroll(date,TEXT).click();
+        wait.until(ExpectedConditions.presenceOfElementLocated(By.id("com.tencent.wework:id/gg_")));
+        click(By.xpath(String.format("//*[@text='%s' and @resource-id='%s']", title, "com.tencent.wework:id/gg_")));
+        click(By.id("com.tencent.wework:id/bfi"));
+        click(By.id("com.tencent.wework:id/b_o"));
+        return this;
+    }
+
+    @Step("编辑日程")
+    public SchedulePage editSchedule(String date,String title,String newTitle){
+        wait.until(ExpectedConditions.elementToBeClickable(By.id("com.tencent.wework:id/gyr")));
+        scroll(date,TEXT).click();
+        wait.until(ExpectedConditions.presenceOfElementLocated(By.id("com.tencent.wework:id/gg_")));
+        click(By.xpath(String.format("//*[@text='%s' and @resource-id='%s']", title, "com.tencent.wework:id/gg_")));
+        click(By.id("com.tencent.wework:id/bs2"));
+        sendKeys(By.id("com.tencent.wework:id/b2k"), newTitle);
         click(By.id("com.tencent.wework:id/ag2"));
         return this;
     }
