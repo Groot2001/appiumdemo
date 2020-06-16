@@ -17,21 +17,10 @@ public class MainPage extends BasePage {
         return new MessagePage(driver);
     }
 
-    @Step("跳转到通讯录")
-    public ContactPage toContactPage(){
-        //ro do ...
-        return new ContactPage(driver);
-    }
-
     @Step("跳转到工作台")
     public WorkStagePage toWorkStagePage(){
         click(workstageTab);
         return new WorkStagePage(driver);
     }
 
-    @Step("跳转到我的")
-    public AboutMePage toAboutMePage(){
-        //to do ...
-        return new AboutMePage(driver);
-    }
 }
