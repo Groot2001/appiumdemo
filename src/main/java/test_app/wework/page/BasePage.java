@@ -1,14 +1,17 @@
 package test_app.wework.page;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.dataformat.yaml.YAMLFactory;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.remote.MobileCapabilityType;
-import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import test_framework.UIAuto;
 
+import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.concurrent.TimeUnit;
@@ -122,4 +125,22 @@ public class BasePage {
     }
 
     //todo: 自动点击弹窗、定位失败重试怎么弄？
+
+
+
+    //todo: yaml数据驱动方式加载用例
+    public UIAuto load(String path){
+        ObjectMapper mapper = new ObjectMapper(new YAMLFactory());
+        UIAuto uiauto = null;
+        try {
+            mapper.readValue(
+                    BasePage.class.getResourceAsStream(path),
+                    UIAuto.class
+            );
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        return uiauto;
+    }
 }

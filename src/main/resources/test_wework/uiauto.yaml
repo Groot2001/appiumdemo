@@ -1,0 +1,11 @@
+name: 数据驱动用例
+description: 数据驱动用例
+steps:
+  - click: { id: search}
+  - id: username_input
+    action: sendKeys
+    key: "2333"
+  - id: search_input
+    action: getText
+  - id: search_input
+    sendKeys: "hello"
