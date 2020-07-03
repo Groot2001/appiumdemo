@@ -17,32 +17,21 @@ public class TradePage extends BasePage {
     @Step("A股开户")
     public TradePage registAStock(String mobileTel) {
         //切换到webview上下文
-        driver.getContextHandles().stream().forEach(context -> {
-            if (context.contains("WEBVIEW_")){
-                driver.context(context);
-            }
-        });
-        //遍历并切换到"A股开户"入口所在的windowHandle
-        Object AStock_win = driver.getWindowHandles().stream().filter(win -> {
-            driver.switchTo().window(win);
-            return driver.getPageSource().contains("A股开户");
-        }).toArray()[0];
-        //切换到"A股开户"入口所在的windowHandle: AStock_win
-        driver.switchTo().window(AStock_win.toString());
+        switchContext("WEBVIEW_");
 
-        click(By.cssSelector(".trade_home_info_3aI")); //点击"A股开户"
+        //切换到"A股开户"入口所在的windowHandle
+        switchWindowHandle("A股开户");
 
-        //找到"A股开户"页面的windowHandle
-        Object AStock_page_win = driver.getWindowHandles().stream().filter(win -> {
-            driver.switchTo().window(win);
-            return driver.getPageSource().contains("立即开户");
-        }).toArray()[0];
-        //切换到"A股开户"页面所在windowHandle: AStock_page_win
-        driver.switchTo().window(AStock_page_win.toString());
+        click(By.cssSelector(".trade_home_info_3aI"));
+
+        //切换到"A股开户"页面的windowHandle
+        switchWindowHandle("立即开户");
 
         sendKeys(By.id("phone-number"), mobileTel);
         click(By.cssSelector(".btn-code"));
+
         //todo: 同一个号码频繁发送验证码会触发图形验证码弹窗
+
         sendKeys(By.id("code"), "000000");
         click(By.cssSelector("btn-submit"));
 

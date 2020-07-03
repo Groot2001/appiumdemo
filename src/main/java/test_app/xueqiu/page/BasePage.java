@@ -47,4 +47,20 @@ public class BasePage {
     public void sendKeys(By by, String text){
         driver.findElement(by).sendKeys(text);
     }
+
+    public void switchContext(String ctx){ //WEBVIEW_
+        driver.getContextHandles().stream().forEach(context -> {
+            if (context.toString().contains(ctx)){
+                driver.context(context.toString());
+            }
+        });
+    }
+
+    public void switchWindowHandle(String by){
+        Object win = driver.getWindowHandles().stream().filter(w -> {
+            driver.switchTo().window(w);
+            return driver.getPageSource().contains(by);
+        }).toArray()[0];
+        driver.switchTo().window(win.toString());
+    }
 }
