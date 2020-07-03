@@ -99,6 +99,7 @@ public class BasePage {
             if (item.containsKey("action")){
                 action(item);
             }
+
         });
     }
 

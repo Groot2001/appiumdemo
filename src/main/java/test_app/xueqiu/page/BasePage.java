@@ -20,6 +20,7 @@ public class BasePage {
         caps.setCapability("appPackage", "com.xueqiu.android");
         caps.setCapability("appActivity", ".view.WelcomeActivityAlias");
         caps.setCapability(MobileCapabilityType.NO_RESET, true);
+        caps.setCapability("chromedriverExecutable", "D:/tools/chromedriver/chromedriver.exe");
 
         try {
             driver =new AndroidDriver(new URL("http://localhost:4723/wd/hub"),caps);

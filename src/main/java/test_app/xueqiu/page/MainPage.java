@@ -18,4 +18,10 @@ public class MainPage extends BasePage{
         click(By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.TabHost/android.widget.LinearLayout/android.widget.TabWidget/android.widget.RelativeLayout[2]"));
         return new MarketPage(driver);
     }
+
+    @Step("跳转到交易")
+    public TradePage toTradePage(){
+        click(By.xpath("//*[@resource-id='com.xueqiu.android:id/tab_name' and @text='交易']"));
+        return new TradePage(driver);
+    }
 }
