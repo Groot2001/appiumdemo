@@ -9,7 +9,7 @@ import org.openqa.selenium.WebDriver;
 import test_app.xueqiu.page.MainPage;
 import test_app.xueqiu.page.TradePage;
 
-public class xueqiuTest {
+public class tradeTest {
     static TradePage tradePage;
 
     @BeforeAll
