@@ -16,20 +16,13 @@ public class TradePage extends BasePage {
 
     @Step("A股开户")
     public TradePage registAStock(String mobileTel) {
-        /* 调试代码：找到webview上下文
-        System.out.println(driver.getPageSource());
-        for (int i = 0; i <3 ; i++) {
-            driver.getContextHandles().stream().forEach(context -> {
-                System.out.println(context);
-            });
-            try {
-                Thread.sleep(500);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
+        //切换到webview上下文
+        driver.getContextHandles().stream().forEach(context -> {
+            if (context.contains("WEBVIEW_")){
+                driver.context(context);
             }
-        }*/
-        driver.context(driver.getContextHandles().toArray()[1].toString()); //切换到webview上下文
-        //遍历找到"A股开户"入口所在的windowHandle
+        });
+        //遍历并切换到"A股开户"入口所在的windowHandle
         Object AStock_win = driver.getWindowHandles().stream().filter(win -> {
             driver.switchTo().window(win);
             return driver.getPageSource().contains("A股开户");
